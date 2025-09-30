@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proxinet - Portfolio</title>
+  <link rel="icon" href="images/wifi-icon-3779.png" sizes="16x16">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    nav {
+      backdrop-filter: blur(10px);
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: center;  /* Biar rata tengah */
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 50px;   /* Tambah jarak antar menu */
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 5px 0;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #1a4a8a;
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+    /* Banner Section */
+    .banner {
+  width: 100%;
+  height: 70vh;
+  background: url('images/bg1.jpg') no-repeat center center/cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* overlay gelap */
+.banner::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5); /* atur gelap sesuai selera */
+  z-index: 1;
+}
+
+/* Logo biar di atas overlay */
+.banner .logo {
+  position: relative;
+  z-index: 2;
+}
+
+.banner .logo img {
+  width: 400px;       /* sesuaikan ukuran */
+  height: 400px;
+  object-fit: cover;
+  border-radius: 50%; /* lingkaran * /* biar ada bingkai keren */
+}
+    /* Sections */
+    section {
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      color: #1a4a8a;
+      margin-bottom: 20px;
+      font-size: 3rem;
+    }
+
+    section p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      color: #444;
+    }
+    .images-peta img {
+      max-width: 80%;     /* agar tidak lebih besar dari 80% lebar layar */
+      height: auto;       /* menjaga proporsi gambar */
+      display: block;     
+      margin: 20px auto;  /* center + jarak atas bawah */ /* opsional: sudut melengkung */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* opsional: biar modern */
+    }
+
+    /* Activity - Portrait Image Slider */
+    .activity-slider {
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    .slider-track {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll-left 25s linear infinite;
+    }
+
+    .slider-track img {
+      width: 200px;
+      height: 300px; /* portrait */
+      object-fit: cover;
+      margin: 0 15px;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+
+    .slider-track img:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    .social-icons {
+      margin: 15px 0;
+    }
+
+    .social-icons a {
+      color: white;
+      margin: 0 15px;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #1a4a8a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="#about">Beranda</a></li>
+      <li><a href="#activity">Kegiatan</a></li>
+      <li><a href="contact.html">Hubungi</a></li>
+    </ul>
+  </nav>
+
+  <!-- Banner Section -->
+   <div class="banner">
+  <div class="logo" data-aos="fade-down">
+    <img src="images/logoprooxi.png" alt="Logo Proxinet">
+  </div>
+</div>
+
+  <!-- About Section -->
+  <section id="about" data-aos="fade-down">
+    <h2 data-aos="fade-down">Tentang Kami</h2>
+    <p data-aos="fade-left">
+      Awal mula ProxiNet berdiri di Jember pada Tahun 2021 dengan kantor 
+      pertama yang berada di jalan Danau Toba, Tegalgede, Sumbersari, Jember yang kemudian 
+      berpindah tempat pada Tahun 2023 di Jalan Mastrip Ruko Pandora Square hingga saat ini.
+    </p>
+    <div class="images-peta" data-aos="fade-left">
+      <img src="images/background/gambarpeta.jpg" alt="gambar peta laut">
+    </div>
+    <p data-aos="fade-right">
+      PT. PROXI JARINGAN NUSANTARA (PROXINET) adalah perusahaan teknologi 
+      informasi dan penyedia layanan internet terkemuka di Indonesia yang tidak 
+      spesifik hanya di Jember, melainkan di tingkat nasional yg berpusat di Kota Batam. 
+      Perusahaan ini menyediakan layanan internet sebagai bagian dari perkembangan teknologi 
+      informasi di Indonesia secara umum.
+    </p>
+  </section>
+  <!-- Activity Section -->
+  <section id="activity" data-aos="fade-up">
+    <h2>Kegiatan</h2>
+    <p>Berikut adalah beberapa kegiatan dan pengalaman kami.</p>
+    <div class="activity-slider">
+      <div class="slider-track">
+        <!-- Ganti dengan gambar lokal Anda -->
+        <img src="images/kegiatan/ilul1.jpg" alt="Activity 1">
+        <img src="images/kegiatan/ilul3.jpg" alt="Activity 3">
+        <img src="images/kegiatan/ilul5.jpg" alt="">
+        <img src="images/kegiatan/ilul4..jpg" alt="Activity 4">
+        <!-- duplikasi biar loop mulus -->
+        <img src="images/kegiatan/ilul1.jpg" alt="Activity 1">
+        <img src="images/kegiatan/ilul3.jpg" alt="Activity 3">
+        <img src="images/kegiatan/ilul5.jpg" alt="Activity 5">
+        <img src="images/kegiatan/ilul4..jpg" alt="Activity 4">
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2025 PT.PROXI JARINGAN NUSANTARA. Design by Muhammad Alif Sya'bani. Concept by Muhammad Khoirul Basyar</p>
+    <div class="social-icons">
+      <a href="https://www.tiktok.com/@proxinet.jember?_t=ZS-9082moGNitA&_r=1"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/proxinetjember?igsh=NTljMjh2M3duZWlh"><i class="fab fa-instagram"></i></a>
+      <a href="https://api.whatsapp.com/send/?phone=%2B628117041659&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: false
+    });
+  </script>
+</body>
+</html>
