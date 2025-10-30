@@ -13,6 +13,7 @@
       padding: 0;
       box-sizing: border-box;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     body {
@@ -21,13 +22,19 @@
       line-height: 1.6;
     }
 
+    /* Dark Mode */
+    body.dark {
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+
     /* Navbar */
     nav {
       backdrop-filter: blur(10px);
       background-color: rgba(0, 0, 0, 0.6);
       padding: 15px 40px;
       display: flex;
-      justify-content: center;  /* Biar rata tengah */
+      justify-content: center;
       align-items: center;
       position: fixed;
       top: 0;
@@ -40,7 +47,7 @@
     nav ul {
       list-style: none;
       display: flex;
-      gap: 50px;   /* Tambah jarak antar menu */
+      gap: 50px;
     }
 
     nav ul li a {
@@ -66,40 +73,56 @@
     nav ul li a:hover::after {
       width: 100%;
     }
+
+    /* Toggle Button */
+    .toggle-btn {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: white;
+      transition: color 0.3s;
+    }
+
+    .toggle-btn:hover {
+      color: #1a4a8a;
+    }
+
     /* Banner Section */
     .banner {
-  width: 100%;
-  height: 70vh;
-  background: url('images/bg1.jpg') no-repeat center center/cover;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
+      width: 100%;
+      height: 70vh;
+      background: url('images/bg1.jpg') no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
 
-/* overlay gelap */
-.banner::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5); /* atur gelap sesuai selera */
-  z-index: 1;
-}
+    .banner::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1;
+    }
 
-/* Logo biar di atas overlay */
-.banner .logo {
-  position: relative;
-  z-index: 2;
-}
+    .banner .logo {
+      position: relative;
+      z-index: 2;
+    }
 
-.banner .logo img {
-  width: 400px;       /* sesuaikan ukuran */
-  height: 400px;
-  object-fit: cover;
-  border-radius: 50%; /* lingkaran * /* biar ada bingkai keren */
-}
+    .banner .logo img {
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
     /* Sections */
     section {
       padding: 30px 20px;
@@ -112,21 +135,31 @@
       font-size: 3rem;
     }
 
+    body.dark section h2 {
+      color: #4d9fff;
+    }
+
     section p {
       max-width: 700px;
       margin: 0 auto;
       font-size: 1.2rem;
       color: #444;
     }
-    .images-peta img {
-      max-width: 80%;     /* agar tidak lebih besar dari 80% lebar layar */
-      height: auto;       /* menjaga proporsi gambar */
-      display: block;     
-      margin: 20px auto;  /* center + jarak atas bawah */ /* opsional: sudut melengkung */
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* opsional: biar modern */
+
+    body.dark section p {
+      color: #ddd;
     }
 
-    /* Activity - Portrait Image Slider */
+    .images-peta img {
+      max-width: 80%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Activity Slider */
     .activity-slider {
       overflow: hidden;
       white-space: nowrap;
@@ -142,7 +175,7 @@
 
     .slider-track img {
       width: 200px;
-      height: 300px; /* portrait */
+      height: 300px;
       object-fit: cover;
       margin: 0 15px;
       border-radius: 15px;
@@ -168,6 +201,11 @@
       margin-top: 40px;
     }
 
+    body.dark footer {
+      background: #111;
+      color: #ccc;
+    }
+
     .social-icons {
       margin: 15px 0;
     }
@@ -185,7 +223,6 @@
   </style>
 </head>
 <body>
-
   <!-- Navbar -->
   <nav>
     <ul>
@@ -193,46 +230,43 @@
       <li><a href="#activity">Kegiatan</a></li>
       <li><a href="contact.html">Hubungi</a></li>
     </ul>
+    <div class="toggle-btn" id="theme-toggle">
+      <i class="fas fa-moon"></i>
+    </div>
   </nav>
 
-  <!-- Banner Section -->
-   <div class="banner">
-  <div class="logo" data-aos="fade-down">
-    <img src="images/logoprooxi.png" alt="Logo Proxinet">
+  <!-- Banner -->
+  <div class="banner">
+    <div class="logo" data-aos="fade-down">
+      <img src="images/logoprooxi.png" alt="Logo Proxinet">
+    </div>
   </div>
-</div>
 
-  <!-- About Section -->
+  <!-- About -->
   <section id="about" data-aos="fade-down">
     <h2 data-aos="fade-down">Tentang Kami</h2>
     <p data-aos="fade-left">
-      Awal mula ProxiNet berdiri di Jember pada Tahun 2021 dengan kantor 
-      pertama yang berada di jalan Danau Toba, Tegalgede, Sumbersari, Jember yang kemudian 
-      berpindah tempat pada Tahun 2023 di Jalan Mastrip Ruko Pandora Square hingga saat ini.
+      Awal mula ProxiNet berdiri di Jember pada Tahun 2021 dengan kantor pertama yang berada di jalan Danau Toba, Tegalgede, Sumbersari, Jember yang kemudian berpindah tempat pada Tahun 2023 di Jalan Mastrip Ruko Pandora Square hingga saat ini.
     </p>
     <div class="images-peta" data-aos="fade-left">
       <img src="images/background/gambarpeta.jpg" alt="gambar peta laut">
     </div>
     <p data-aos="fade-right">
-      PT. PROXI JARINGAN NUSANTARA (PROXINET) adalah perusahaan teknologi 
-      informasi dan penyedia layanan internet terkemuka di Indonesia yang tidak 
-      spesifik hanya di Jember, melainkan di tingkat nasional yg berpusat di Kota Batam. 
-      Perusahaan ini menyediakan layanan internet sebagai bagian dari perkembangan teknologi 
-      informasi di Indonesia secara umum.
+      PT. PROXI JARINGAN NUSANTARA (PROXINET) adalah perusahaan teknologi informasi dan penyedia layanan internet terkemuka di Indonesia yang tidak spesifik hanya di Jember, melainkan di tingkat nasional yg berpusat di Kota Batam. Perusahaan ini menyediakan layanan internet sebagai bagian dari perkembangan teknologi informasi di Indonesia secara umum.
     </p>
   </section>
-  <!-- Activity Section -->
+
+  <!-- Activity -->
   <section id="activity" data-aos="fade-up">
     <h2>Kegiatan</h2>
     <p>Berikut adalah beberapa kegiatan dan pengalaman kami.</p>
     <div class="activity-slider">
       <div class="slider-track">
-        <!-- Ganti dengan gambar lokal Anda -->
         <img src="images/kegiatan/ilul1.jpg" alt="Activity 1">
         <img src="images/kegiatan/ilul3.jpg" alt="Activity 3">
-        <img src="images/kegiatan/ilul5.jpg" alt="">
+        <img src="images/kegiatan/ilul5.jpg" alt="Activity 5">
         <img src="images/kegiatan/ilul4..jpg" alt="Activity 4">
-        <!-- duplikasi biar loop mulus -->
+        <!-- duplikasi -->
         <img src="images/kegiatan/ilul1.jpg" alt="Activity 1">
         <img src="images/kegiatan/ilul3.jpg" alt="Activity 3">
         <img src="images/kegiatan/ilul5.jpg" alt="Activity 5">
@@ -240,6 +274,7 @@
       </div>
     </div>
   </section>
+
   <footer>
     <p>&copy; 2025 PT.PROXI JARINGAN NUSANTARA. Design by Muhammad Alif Sya'bani. Concept by Muhammad Khoirul Basyar</p>
     <div class="social-icons">
@@ -248,13 +283,26 @@
       <a href="https://api.whatsapp.com/send/?phone=%2B6285232352859&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i></a>
     </div>
   </footer>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 1000,
-      once: false
+    AOS.init({ duration: 1000, once: false });
+
+    const toggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Cek tema tersimpan
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark');
+      toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const isDark = body.classList.contains('dark');
+      toggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
   </script>
 </body>
 </html>
-
